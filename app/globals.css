@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: feSpotLight) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); */
+}
+
+.span-1 {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+.span-2{
+  display: block;
+}
+
+.span-1, .span-2 {
+  box-sizing: border-box;
+  width: auto;
+  height: auto;
+  background: none;
+  opacity: 1;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+.img-2 {
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border: none;
+  margin: auto;
+  width: 0;
+  height: 0;
+  min-width: 100%;
+  min-height: 100%;
+  max-height: 100%;
+}
+
+
+
+
+.p-2 {
+  padding: 0.8rem;
+}
+
+.bg-gray-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(243 244 246/var(--tw-bg-opacity));
+}
+
+.items-center {
+  align-items: center;
+}
+
+.mt-\[-9px\] {
+  margin-top: -9px;
+}
+
+.mb-\[-9px\] {
+  margin-bottom: -9px;
+}
+
+.w-full {
+  width: 100%;
+}
