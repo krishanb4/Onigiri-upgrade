@@ -9,6 +9,27 @@ import Header from "./components/Header/Header";
 //import Layerzero from "./components/Layerzero/Layerzero";
 //import Mode from "./components/Mode/Mode";
 import Swap from "./components/Swap/Swap";
+import {
+  EthereumClient,
+  w3mConnectors,
+  w3mProvider,
+} from "@web3modal/ethereum";
+import type { AppProps } from "next/app";
+import { configureChains, createClient, useConnect, WagmiConfig } from "wagmi";
+import { chainlist } from "./config/chains";
+//const projectId = process.env.NEXT_PUBLIC_PROJECT_ID!;
+const { chains, provider } = configureChains(
+  [chainlist.coreDAO, chainlist.bscChain],
+  [w3mProvider({ projectId })]
+);
+
+const wagmiClient = createClient({
+  autoConnect: true,
+  connectors: w3mConnectors({ projectId, version: 1, chains }),
+  provider,
+});
+
+const ethereumClient = new EthereumClient(wagmiClient, chains);
 
 export default function Home() {
   return (

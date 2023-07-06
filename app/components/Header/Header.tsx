@@ -34,7 +34,7 @@ export default function Header() {
             <div className="hidden md:flex justify-center gap-2 relative h-[38px]">
               <button aria-expanded="true" aria-haspopup="true" type="button">
                 <span className="btn flex items-center justify-center gap-2 cursor-pointer transition-all bg-slate-300 hover:bg-black/25   text-gray-700 hover:text-gray-800 px-4 h-[38px] rounded-xl text-base font-semibold">
-                  Buy 4TOKEN
+                  Buy ONIGIRI
                 </span>
               </button>
             </div>

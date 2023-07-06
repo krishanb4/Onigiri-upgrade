@@ -10,8 +10,8 @@ export default function Aprove() {
           type="button"
           id="headlessui-popover-button-:r1e:"
         >
-          <span className="hidden md:block">Approve</span>
-          <span className="block md:hidden">Approve</span>
+          <span className="hidden md:block">Transfer</span>
+          <span className="block md:hidden">Transfer</span>
         </button>
       </div>
     </div>

@@ -1,5 +1,49 @@
+"use client"; 
+import { useAccount, useBalance, useNetwork } from "wagmi";
+import { useEffect, useState } from "react";
 export default function Amount1() {
-  return (
+  
+const { chain } = useNetwork();
+const [chainID, setChainID] = useState(0);
+const { address, isConnected } = useAccount();
+const tokenAddress = "0xb4615aad766f6de3c55330099e907ff7f13f1582";
+
+const [tokenbalance, setTokenBalanceLocal] = useState("");
+const [integerPart, setIntegerPart] = useState("0");
+const [fractionalPart, setFractionalPart] = useState("00");
+const { data, isError, isLoading } = useBalance({
+  address: address,
+  token: tokenAddress,
+  chainId: chainID,
+  watch: true,
+  onError(error) {
+    console.log("Error", error);
+  },
+});
+
+useEffect(() => {
+  if (chain?.id == 1) {
+    setChainID(1);
+  } else if (chain?.id == 56) {
+    setChainID(1);
+  }
+
+  if (!isLoading) {
+    const tokenB = data?.formatted || "";
+    setTokenBalanceLocal(tokenB);
+
+    // console.log(tokenB);
+
+    const integerPart = Math.floor(Number(data?.formatted)); // Extract the integer part
+    const fractionalPart = (Number(data?.formatted) - integerPart).toFixed(6);
+
+    setIntegerPart(integerPart.toString());
+    const fPart = fractionalPart.toString();
+    setFractionalPart(fPart.substring(2));
+  }
+}, [chain?.id, tokenAddress, address, data, isLoading]);
+
+return (
     <div className="flex flex-col border-[2px] p-3 border-white  saturate-[2] dark:saturate-[1] py-3 rounded-xl">
       <div className="relative flex items-center gap-4">
         <input
@@ -62,7 +106,7 @@ export default function Amount1() {
             ></path>
           </svg>
           <span className="text-lg">
-            <span className="text-sm font-semibold text-cyan-50">000000</span>
+            <span className="text-sm font-semibold text-cyan-50">{fractionalPart}</span>
           </span>
         </button>
       </div>
